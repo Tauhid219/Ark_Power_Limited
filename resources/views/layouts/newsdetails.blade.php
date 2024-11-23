@@ -22,20 +22,24 @@
                 </div>
                 <div class="md:col-span-1 bg-blue-gray-50 p-5">
                     <h1 class="text-2xl pb-4 font-semibold">Related News</h1>
-                    @foreach ($relatedNews as $news)
-                        <div class="border bg-white p-2 mb-3">
-                            <div class="relative h-44 overflow-hidden">
-                                <img src="{{ asset('storage/' . $news->featured_image) }}" alt="{{ $news->title }}"
-                                    class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                    @if ($relatedNews->isNotEmpty())
+                        @foreach ($relatedNews as $news)
+                            <div class="border bg-white p-2 mb-3">
+                                <div class="relative h-44 overflow-hidden">
+                                    <img src="{{ asset('storage/' . $news->featured_image) }}" alt="{{ $news->title }}"
+                                        class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                                </div>
+                                <div class="flex justify-between items-center my-2">
+                                    <p class="font-bold uppercase">{{ $news->category->name }}</p>
+                                    <p>{{ $news->created_at->format('Y-m-d') }}</p>
+                                </div>
+                                <a class="hover:underline text-2xl font-bold mb-3"
+                                    href="{{ route('newsdetails', $news->id) }}">{{ Str::limit($news->title, 20) }}</a>
                             </div>
-                            <div class="flex justify-between items-center my-2">
-                                <p class="font-bold uppercase">{{ $news->category->name }}</p>
-                                <p>{{ $news->created_at->format('Y-m-d') }}</p>
-                            </div>
-                            <a class="hover:underline text-2xl font-bold mb-3"
-                                href="{{ route('newsdetails', $news->id) }}">{{ Str::limit($news->title, 20) }}</a>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @else
+                        <p class="text-gray-500">No related news available at the moment.</p>
+                    @endif
                 </div>
             </div>
         </div>

@@ -81,6 +81,14 @@ class ProductResource extends Resource
                     ->label('Status')
                     ->onColor('success')
                     ->offColor('danger')
+                    ->default(false)
+                    ->inline(false),
+
+                Toggle::make('featured')
+                    ->label('Featured')
+                    ->onColor('success')
+                    ->offColor('danger')
+                    ->default(false)
                     ->inline(false),
                 
                 TextInput::make('source_name')

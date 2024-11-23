@@ -1,25 +1,26 @@
 <div class="">
-    <div class="min-h-screen w-full max-w-screen-xl mx-auto flex items-center justify-center p-5">
+    <div class="min-h-screen w-full max-w-screen-xl mx-auto flex items-start justify-center p-5">
         <div class="md:mt-24 mt-14">
             <h1 class="text-primary text-center md:text-5xl text-3xl uppercase">Our Products</h1>
             <p class="text-primary text-center md:mt-2 text-xl md:uppercase font-medium">We truly care about our
                 customer</p>
-            @if ($products->isNotEmpty())
-                <div class="flex justify-center my-5">
-                    <!-- "All" Button -->
-                    <button wire:click="filterByCategory"
-                        class="px-4 py-2 mx-2 {{ is_null($selectedCategory) ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">
-                        All
-                    </button>
+            <div class="flex justify-center my-5">
+                <!-- "All" Button -->
+                <button wire:click="filterByCategory"
+                    class="px-4 py-2 mx-2 {{ is_null($selectedCategory) ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">
+                    All
+                </button>
 
-                    <!-- Category Buttons -->
-                    @foreach ($categories as $category)
-                        <button wire:click="filterByCategory({{ $category->id }})"
-                            class="px-4 py-2 mx-2 {{ $selectedCategory === $category->id ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">
-                            {{ $category->name }}
-                        </button>
-                    @endforeach
-                </div>
+                <!-- Category Buttons -->
+                @foreach ($categories as $category)
+                    <button wire:click="filterByCategory({{ $category->id }})"
+                        class="px-4 py-2 mx-2 {{ $selectedCategory === $category->id ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">
+                        {{ $category->name }}
+                    </button>
+                @endforeach
+            </div>
+
+            @if ($products->isNotEmpty())
 
                 <div class="grid lg:grid-cols-4 md:grid-cols-3 gap-10">
                     @foreach ($products as $product)

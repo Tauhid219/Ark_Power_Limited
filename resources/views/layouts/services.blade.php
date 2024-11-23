@@ -41,31 +41,131 @@
                         </ul>
                     </div>
                     <div class="p-5 hover:bg-gray-50 transition ease-in-out duration-300">
-                        <h1 class="font-bold mb-3 text-xl flex items-center gap-2"><svg stroke="currentColor"
-                                fill="currentColor" stroke-width="0" viewBox="0 0 576 512" class="text-primary"
-                                height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
-                                </path>
-                            </svg> Featured Product</h1>
-                        <div
-                            class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden p-3 border hover:shadow-2xl transition-transform duration-300 hover:scale-105">
+
+                        @if ($featuredProduct != null)
+                            <h1 class="font-bold mb-3 text-xl flex items-center gap-2"><svg stroke="currentColor"
+                                    fill="currentColor" stroke-width="0" viewBox="0 0 576 512" class="text-primary"
+                                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
+                                    </path>
+                                </svg> Featured Product</h1>
                             <div
-                                class="relative bg-clip-border overflow-hidden bg-transparent text-gray-700 shadow-none m-0 rounded-none">
-                                <div class="relative h-44 rounded-lg overflow-hidden"><img
-                                        src="{{ asset('/img/service_mushroom.jpeg') }}" alt="Product name"
-                                        class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                                class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden p-3 border hover:shadow-2xl transition-transform duration-300 hover:scale-105">
+                                <div
+                                    class="relative bg-clip-border overflow-hidden bg-transparent text-gray-700 shadow-none m-0 rounded-none">
+                                    <div class="relative h-44 rounded-lg overflow-hidden"><img
+                                            src="{{ asset('storage/' . $featuredProduct->image) }}" alt="Product name"
+                                            class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <div class="text-center"><a
+                                            class="md:text-lg text-primary font-semibold text-sm hover:underline transition duration-300"
+                                            href="{{ route('productdetails', $featuredProduct->id) }}">{{ $featuredProduct->name }}</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="p-6">
-                                <div class="text-center"><a
-                                        class="md:text-lg text-primary font-semibold text-sm hover:underline transition duration-300"
-                                        href="/">Product Name</a></div>
-                            </div>
-                        </div>
+                        @endif
+
+
+
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="min-h-[70vh] flex items-center justify-center p-5 w-full max-w-screen-xl mx-auto my-10">
+            <div>
+                <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1  md:gap-10 gap-2 items-center text-center ">
+                    
+                    <div class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
+                        <div class="w-16 h-16 mb-5 overflow-hidden"><img
+                                class="w-full h-full object-cover transition-transform duration-700 transform"
+                                src="https://cdn-icons-png.freepik.com/512/5388/5388782.png" alt="Security System">
+                        </div>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Security
+                            System</h1>
+                        <p class="text-center h-20">Advanced wireless cameras for seamless surveillance with audio-visual
+                            monitoring and data security.</p>
+                    </div>
+
+                    <div class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
+                        <div class="w-16 h-16 mb-5 overflow-hidden"><img
+                                class="w-full h-full object-cover transition-transform duration-700 transform"
+                                src="https://cdn-icons-png.freepik.com/512/2114/2114385.png" alt="Solar System"></div>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Solar System
+                        </h1>
+                        <p class="text-center h-20">Eco-friendly solar power solutions, including pumps and panels, for
+                            sustainable energy generation.</p>
+                    </div>
+
+                    <div class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
+                        <div class="w-16 h-16 mb-5 overflow-hidden"><img
+                                class="w-full h-full object-cover transition-transform duration-700 transform"
+                                src="https://cdn-icons-png.flaticon.com/512/4824/4824945.png" alt="Transformer"></div>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Transformer
+                        </h1>
+                        <p class="text-center h-20">Efficient transformers for electrical power distribution, ensuring
+                            reliable
+                            energy management.
+
+                        </p>
+                    </div>
+                    <div class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
+                        <div class="w-16 h-16 mb-5 overflow-hidden"><img
+                                class="w-full h-full object-cover transition-transform duration-700 transform"
+                                src="https://img.freepik.com/premium-vector/generator-icon-logo-vector-design-template_827767-4583.jpg"
+                                alt="Generator"></div>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Generator</h1>
+                        <p class="text-center h-20">Gas and diesel generators for diverse applications, providing
+                            uninterrupted
+                            power supply.</p>
+                    </div>
+                    <div class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
+                        <div class="w-16 h-16 mb-5 overflow-hidden"><img
+                                class="w-full h-full object-cover transition-transform duration-700 transform"
+                                src="https://static.thenounproject.com/png/2301592-200.png" alt="Data Center"></div>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Data Center
+                        </h1>
+                        <p class="text-center h-20">Customized data center setups with cutting-edge technologies for secure
+                            and
+                            efficient operations.</p>
+                    </div>
+                    <div class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
+                        <div class="w-16 h-16 mb-5 overflow-hidden"><img
+                                class="w-full h-full object-cover transition-transform duration-700 transform"
+                                src="https://icons.veryicon.com/png/o/construction-tools/equipment-2/ups-1.png"
+                                alt="UPS"></div>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">UPS</h1>
+                        <p class="text-center h-20">Reliable online UPS systems for continuous power supply during outages,
+                            ensuring device safety.</p>
+                    </div>
+                    <div class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
+                        <div class="w-16 h-16 mb-5 overflow-hidden"><img
+                                class="w-full h-full object-cover transition-transform duration-700 transform"
+                                src="https://cdn-icons-png.flaticon.com/512/48/48860.png" alt="Communication Equipment">
+                        </div>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Communication
+                            Equipment</h1>
+                        <p class="text-center h-20">High-quality tools to enhance communication networks, ensuring optimal
+                            connectivity and performance.</p>
+                    </div>
+                    <div class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
+                        <div class="w-16 h-16 mb-5 overflow-hidden"><img
+                                class="w-full h-full object-cover transition-transform duration-700 transform"
+                                src="https://cdn5.vectorstock.com/i/1000x1000/35/29/power-voltage-regulator-icon-simple-vector-41053529.jpg"
+                                alt="Automatic Voltage Regulator"></div>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Automatic
+                            Voltage
+                            Regulator</h1>
+                        <p class="text-center h-20">Regulators maintaining consistent generator voltage for stable and
+                            efficient
+                            power delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection

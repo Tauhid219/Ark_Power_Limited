@@ -3,13 +3,13 @@
 
 
 <footer
-    class="relative bg-cover bg-center bg-[url('https://png.pngtree.com/background/20230527/original/pngtree-render-of-a-3d-model-of-a-power-station-picture-image_2761474.jpg')]">
+    class="relative bg-cover bg-center" style="background-image: url('{{ asset('img/bg_h_1.jpg') }}');">
     <div className="absolute bg-black/80"></div>
-    <div class="releted text-white bg-black/50 backdrop-blur-sm">
+    <div class="releted text-white bg-black/50 backdrop-blur-sm text-sm">
         <div class="grid md:grid-cols-4 grid-cols-1 py-10 px-5 md:gap-5 w-full max-w-screen-xl p-5 mx-auto">
             <div>
-                @if (!empty($siteData->logo))
-                    <img class="" src="{{ asset('storage/' . $siteData->logo) }}" alt="ARK Power Ltd.">
+                @if (!empty($siteData->white_logo))
+                    <img class="" src="{{ asset('storage/' . $siteData->white_logo) }}" alt="ARK Power Ltd.">
                 @else
                     <span class="text-red-500 font-semibold">Logo not set</span>
                 @endif
@@ -145,7 +145,7 @@
                 <h1 class="text-xl font-bold uppercase opacity-80 pb-3">KEEP IN TOUCH</h1>
                 <ul class="space-y-2 pr-5">
                     <li>
-                        <p class="md:text-start text-center">Subscribe to Our Newsletter to get Important
+                        <p class="text-center md:text-start">Subscribe to Our Newsletter to get Important
                             News &amp; Offers</p>
                     </li>
                     <li>
@@ -166,7 +166,7 @@
                 </ul>
             </div>
         </div>
-        <div class="bg-black p-4 text-sm">
+        <div class="bg-transparent p-4 text-sm">
             <p class="text-center text-white">© All Rights Reserved, ARK POWER LTD.</p>
         </div>
     </div>

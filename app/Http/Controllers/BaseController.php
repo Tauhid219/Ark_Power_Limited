@@ -7,14 +7,14 @@ use App\Models\Career;
 use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Models\SiteData;
+use App\Models\Sitedata;
 use Carbon\Carbon;
 
 class BaseController extends Controller
 {
     public function home()
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         $affiliations = Affiliation::all();
         $latestPosts = Post::orderBy('created_at', 'desc')->take(9)->get();
 
@@ -23,13 +23,13 @@ class BaseController extends Controller
 
     public function products()
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         return view('layouts.products', compact('siteData'));
     }
 
     public function productDetails(string $id)
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         $data = Product::find($id);
 
         $relatedProducts = Product::where('category_id', $data->category_id)
@@ -43,19 +43,20 @@ class BaseController extends Controller
 
     public function service()
     {
-        $siteData = SiteData::first();
-        return view('layouts.services', compact('siteData'));
+        $siteData = Sitedata::first();
+        $featuredProduct = Product::where('status', 1)->where('featured', 1)->inRandomOrder()->first();
+        return view('layouts.services', compact('siteData', 'featuredProduct'));
     }
 
     public function news()
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         return view('layouts.news', compact('siteData'));
     }
 
     public function newsDetails(string $id)
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         $data = Post::find($id);
 
         // Fetch related posts from the same category, excluding the current post, ordered by latest
@@ -70,19 +71,19 @@ class BaseController extends Controller
 
     public function aboutUs()
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         return view('layouts.aboutus', compact('siteData'));
     }
 
     public function contactUs()
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         return view('layouts.contactus', compact('siteData'));
     }
 
     public function career()
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         $careers = Career::with('category') // Eager load the category relationship
             ->where('is_active', 1) // Only retrieve active careers
             ->where('deadline', '>=', Carbon::now()) // Only careers with a valid deadline
@@ -92,7 +93,7 @@ class BaseController extends Controller
 
     public function careerDetails(string $id)
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         $data = Career::find($id);
 
         // Fetch 2 latest posts for each career category
@@ -123,13 +124,13 @@ class BaseController extends Controller
 
     public function termCondition()
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         return view('layouts.termcondition', compact('siteData'));
     }
 
     public function affiliations()
     {
-        $siteData = SiteData::first();
+        $siteData = Sitedata::first();
         $affiliations = Affiliation::all();
         return view('layouts.home', compact('siteData', 'affiliations'));
     }

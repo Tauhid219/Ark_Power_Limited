@@ -15,6 +15,7 @@ class Sitedata extends Model
         'siteName',
         'tagLine',
         'logo',
+        'white_logo',
         'favIcon',
         'address',
         'phoneNumber',

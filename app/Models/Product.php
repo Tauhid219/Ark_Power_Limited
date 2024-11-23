@@ -12,6 +12,7 @@ class Product extends Model
         'description',
         'category_id',
         'image',
+        'featured',
         'status',
         'source_url',
         'source_name',

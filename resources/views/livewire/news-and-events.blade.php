@@ -1,20 +1,21 @@
 <div class="">
-    <div class="min-h-screen w-full max-w-screen-xl mx-auto flex items-center justify-center p-5">
+    <div class="min-h-screen w-full max-w-screen-xl mx-auto flex items-start justify-center p-5">
         <div>
             <div class="md:mt-24 mt-14">
                 <h1 class="text-primary text-center md:text-5xl text-3xl uppercase">
                     News &amp; Events
                 </h1>
             </div>
+            <div class="flex justify-center my-5">
+                <button wire:click="setFilter('all')"
+                    class="px-4 py-2 mx-2 {{ $filter === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">All</button>
+                <button wire:click="setFilter('news')"
+                    class="px-4 py-2 mx-2 {{ $filter === 'news' ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">News</button>
+                <button wire:click="setFilter('events')"
+                    class="px-4 py-2 mx-2 {{ $filter === 'events' ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">Events</button>
+            </div>
+
             @if ($posts->isNotEmpty())
-                <div class="flex justify-center my-5">
-                    <button wire:click="setFilter('all')"
-                        class="px-4 py-2 mx-2 {{ $filter === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">All</button>
-                    <button wire:click="setFilter('news')"
-                        class="px-4 py-2 mx-2 {{ $filter === 'news' ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">News</button>
-                    <button wire:click="setFilter('events')"
-                        class="px-4 py-2 mx-2 {{ $filter === 'events' ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">Events</button>
-                </div>
                 <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-5 my-10">
                     @foreach ($posts as $post)
                         <div class="border p-2">

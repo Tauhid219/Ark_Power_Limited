@@ -25,7 +25,7 @@
 <body class="">
 
     <header>
-        <div class="shadow-md w-full fixed top-0 z-50 left-0 py-2 navbar transition-colors duration-500 ease-in-out">
+        <div class="shadow-md w-full fixed top-0 z-50 left-0 py-2 navbar transition-colors ease-in-out">
             <div class="flex items-center justify-between w-full max-w-screen-xl mx-auto p-5">
 
                 <a href="/" id="logo" class="font-bold text-2xl flex items-center gap-1">
@@ -51,27 +51,27 @@
                 <ul id="navLinks"
                     class="hidden lg:flex items-center absolute lg:static bg-slate-200 lg:bg-transparent w-full text-bold lg:w-auto left-0 top-16 lg:top-auto opacity-100 lg:opacity-100 transition-all duration-500 ease-in text-center">
                     <li class="lg:ml-8 my-2 lg:my-0">
-                        <a href="/" class=" hover:text-blue-500 duration-500">Home</a>
+                        <a href="/" class=" hover:text-blue-500 ">Home</a>
                     </li>
                     <li class="lg:ml-8 my-2 lg:my-0">
-                        <a href="{{ route('services') }}" class="hover:text-blue-500 duration-500">Service</a>
+                        <a href="{{ route('services') }}" class="hover:text-blue-500 ">Service</a>
                     </li>
                     <li class="lg:ml-8 my-2 lg:my-0">
-                        <a href="{{ route('products') }}" class="hover:text-blue-500 duration-500">Products</a>
+                        <a href="{{ route('products') }}" class="hover:text-blue-500 ">Products</a>
                     </li>
                     <li class="lg:ml-8 my-2 lg:my-0">
-                        <a href="{{ route('news') }}" class="hover:text-blue-500 duration-500">News &
+                        <a href="{{ route('news') }}" class="hover:text-blue-500 ">News &
                             Event</a>
                     </li>
                     <li class="lg:ml-8 my-2 lg:my-0">
-                        <a href="{{ route('about') }}" class="hover:text-blue-500 duration-500">About
+                        <a href="{{ route('about') }}" class="hover:text-blue-500 ">About
                             Us</a>
                     </li>
                     <li class="lg:ml-8 my-2 lg:my-0">
-                        <a href="{{ route('contact') }}" class=" hover:text-blue-500 duration-500">Contact</a>
+                        <a href="{{ route('contact') }}" class=" hover:text-blue-500 ">Contact</a>
                     </li>
                     <li class="lg:ml-8 my-2 lg:my-0">
-                        <a href="{{ route('career') }}" class="hover:text-blue-500 duration-500">Career</a>
+                        <a href="{{ route('career') }}" class="hover:text-blue-500">Career</a>
                     </li>
                 </ul>
             </div>

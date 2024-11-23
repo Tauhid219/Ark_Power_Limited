@@ -4,12 +4,12 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\SiteData;
+use App\Models\Sitedata;
 use App\Models\BlogCategory;
 use App\Models\Post;
 use Illuminate\Support\ServiceProvider;
 
-use App\Observers\SiteDataObserver;
+use App\Observers\SitedataObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\ProductObserver;
 use App\Observers\BlogCategoryObserver;
@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        SiteData::observe(SiteDataObserver::class);
+        Sitedata::observe(SiteDataObserver::class);
         Category::observe(CategoryObserver::class);
         Product::observe(ProductObserver::class);
         BlogCategory::observe(BlogCategoryObserver::class);

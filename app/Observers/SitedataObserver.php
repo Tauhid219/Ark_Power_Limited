@@ -25,6 +25,10 @@ class SitedataObserver
             Storage::disk('public')->delete($sitedata->getOriginal('logo'));
         }
 
+        if ($sitedata->isDirty('white_logo')) {
+            Storage::disk('public')->delete($sitedata->getOriginal('white_logo'));
+        }
+
         if ($sitedata->isDirty('favIcon')) {
             Storage::disk('public')->delete($sitedata->getOriginal('favIcon'));
         }
@@ -37,6 +41,10 @@ class SitedataObserver
     {
         if (! is_null($sitedata->logo)) {
             Storage::disk('public')->delete($sitedata->logo);
+        }
+
+        if (! is_null($sitedata->white_logo)) {
+            Storage::disk('public')->delete($sitedata->white_logo);
         }
 
         if (! is_null($sitedata->favIcon)) {

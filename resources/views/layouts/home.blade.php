@@ -9,14 +9,11 @@
                 <p class="text-xl text-white">Welcome to</p>
                 <h1 class="my-3 text-[#19ADEE] md:text-5xl text-3xl md:font-bold font-semibold uppercase ">Ark Power Limited
                 </h1>
-                <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium libero fugiat
-                    magnam. Natus fugit
-                    deserunt dignissimos blanditiis id tempore praesentium veritatis? Ad, rerum. Veniam, iusto illo dolorum
-                    recusandae sint dolorem?</p>
+                <p class="text-white text-xl"> {{ $siteData->tagLine ?? 'Leading the way in power protection, generation, and innovation across Bangladesh.' }} </p>
                 <div>
                     <a href="/about-us">
                         <button
-                            class="btn-primary mt-5 md:mb-0 mb-10 text-black text-blod text-xl bg-slate-100 p-3 rounded-lg">About
+                            class="btn-primary mt-5 md:mb-0 mb-10 text-black text-blod text-lg bg-slate-100 p-2 rounded-lg">About
                             Us</button>
                     </a>
                 </div>
@@ -57,7 +54,7 @@
             <div class="md:grid grid-cols-2 gap-10 mt-10 md:mt-16 w-full max-w-screen-xl p-5 mx-auto">
                 <div class="relative w-full h-[330px] md:h-[500px] overflow-hidden rounded-lg shadow-lg">
                     <div class="absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out">
-                        <img src="{{ asset('/img/home_photo_1.jpeg') }}" alt="Slide 0"
+                        <img src="{{ asset('/img/home_photo_1.jpg') }}" alt="Slide 0"
                             class="w-full h-full object-cover rounded-lg" />
                     </div>
                 </div>
@@ -79,85 +76,109 @@
             </div>
         </div>
 
+
+
         <div class="min-h-[70vh] flex items-center justify-center p-5 w-full max-w-screen-xl mx-auto">
             <div>
                 <h1 class="text-primary md:text-4xl text-2xl text-center my-10">Products and Services
                 </h1>
-                <div class="grid md:grid-cols-4 grid-cols-2 md:gap-10 gap-2 justify-center items-center text-center">
-                    <div class="flex flex-col items-center p-4">
+                <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1  md:gap-10 gap-2 items-center text-center ">
+                    <div
+                        class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
                         <div class="w-16 h-16 mb-5 overflow-hidden"><img
                                 class="w-full h-full object-cover transition-transform duration-700 transform"
                                 src="https://cdn-icons-png.freepik.com/512/5388/5388782.png" alt="Security System">
                         </div>
-                        <h1 class="md:text-2xl text-xl md:font-bold text-center">Security System</h1>
-                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Perspiciatis, quis.</p>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Security
+                            System</h1>
+                        <p class="text-center h-20">Advanced wireless cameras for seamless surveillance with audio-visual
+                            monitoring and data security.</p>
                     </div>
-                    <div class="flex flex-col items-center p-4">
+                    <div
+                        class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
                         <div class="w-16 h-16 mb-5 overflow-hidden"><img
                                 class="w-full h-full object-cover transition-transform duration-700 transform"
                                 src="https://cdn-icons-png.freepik.com/512/2114/2114385.png" alt="Solar System"></div>
-                        <h1 class="md:text-2xl text-xl md:font-bold text-center">Solar System</h1>
-                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Perspiciatis, quis.</p>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Solar System
+                        </h1>
+                        <p class="text-center h-20">Eco-friendly solar power solutions, including pumps and panels, for
+                            sustainable energy generation.</p>
                     </div>
-                    <div class="flex flex-col items-center p-4">
+                    <div
+                        class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
                         <div class="w-16 h-16 mb-5 overflow-hidden"><img
                                 class="w-full h-full object-cover transition-transform duration-700 transform"
                                 src="https://cdn-icons-png.flaticon.com/512/4824/4824945.png" alt="Transformer"></div>
-                        <h1 class="md:text-2xl text-xl md:font-bold text-center">Transformer</h1>
-                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Perspiciatis, quis.</p>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Transformer
+                        </h1>
+                        <p class="text-center h-20">Efficient transformers for electrical power distribution, ensuring
+                            reliable
+                            energy management.
+
+                        </p>
                     </div>
-                    <div class="flex flex-col items-center p-4">
+                    <div
+                        class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
                         <div class="w-16 h-16 mb-5 overflow-hidden"><img
                                 class="w-full h-full object-cover transition-transform duration-700 transform"
                                 src="https://img.freepik.com/premium-vector/generator-icon-logo-vector-design-template_827767-4583.jpg"
                                 alt="Generator"></div>
-                        <h1 class="md:text-2xl text-xl md:font-bold text-center">Generator</h1>
-                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Perspiciatis, quis.</p>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Generator</h1>
+                        <p class="text-center h-20">Gas and diesel generators for diverse applications, providing
+                            uninterrupted
+                            power supply.</p>
                     </div>
-                    <div class="flex flex-col items-center p-4">
+                    <div
+                        class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
                         <div class="w-16 h-16 mb-5 overflow-hidden"><img
                                 class="w-full h-full object-cover transition-transform duration-700 transform"
                                 src="https://static.thenounproject.com/png/2301592-200.png" alt="Data Center"></div>
-                        <h1 class="md:text-2xl text-xl md:font-bold text-center">Data Center</h1>
-                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Perspiciatis, quis.</p>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Data Center
+                        </h1>
+                        <p class="text-center h-20">Customized data center setups with cutting-edge technologies for secure
+                            and
+                            efficient operations.</p>
                     </div>
-                    <div class="flex flex-col items-center p-4">
+                    <div
+                        class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
                         <div class="w-16 h-16 mb-5 overflow-hidden"><img
                                 class="w-full h-full object-cover transition-transform duration-700 transform"
                                 src="https://icons.veryicon.com/png/o/construction-tools/equipment-2/ups-1.png"
                                 alt="UPS"></div>
-                        <h1 class="md:text-2xl text-xl md:font-bold text-center">UPS</h1>
-                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Perspiciatis, quis.</p>
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">UPS</h1>
+                        <p class="text-center h-20">Reliable online UPS systems for continuous power supply during outages,
+                            ensuring device safety.</p>
                     </div>
-                    <div class="flex flex-col items-center p-4">
+                    <div
+                        class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
                         <div class="w-16 h-16 mb-5 overflow-hidden"><img
                                 class="w-full h-full object-cover transition-transform duration-700 transform"
                                 src="https://cdn-icons-png.flaticon.com/512/48/48860.png" alt="Communication Equipment">
                         </div>
-                        <h1 class="md:text-2xl text-xl md:font-bold text-center">Communication
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Communication
                             Equipment</h1>
-                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Perspiciatis, quis.</p>
+                        <p class="text-center h-20">High-quality tools to enhance communication networks, ensuring optimal
+                            connectivity and performance.</p>
                     </div>
-                    <div class="flex flex-col items-center p-4">
+                    <div
+                        class="flex flex-col items-center p-4 justify-start hover:bg-gray-50 transition ease-in-out duration-300 transform hover:scale-105">
                         <div class="w-16 h-16 mb-5 overflow-hidden"><img
                                 class="w-full h-full object-cover transition-transform duration-700 transform"
                                 src="https://cdn5.vectorstock.com/i/1000x1000/35/29/power-voltage-regulator-icon-simple-vector-41053529.jpg"
                                 alt="Automatic Voltage Regulator"></div>
-                        <h1 class="md:text-2xl text-xl md:font-bold text-center">Automatic Voltage
+                        <h1 class="text-lg md:text-xl lg:text-2xl  md:font-bold text-center mb-5 h-6 md:h-12">Automatic
+                            Voltage
                             Regulator</h1>
-                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Perspiciatis, quis.</p>
+                        <p class="text-center h-20">Regulators maintaining consistent generator voltage for stable and
+                            efficient
+                            power delivery.</p>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
 
         <div class="min-h-[70vh] flex items-center justify-center p-5 mt-10 w-full max-w-screen-xl mx-auto">
             <div>
@@ -200,7 +221,7 @@
                 <h1 class="text-2xl font-bold uppercase mb-7 text-center">Our Affiliations</h1>
                 @if ($affiliations->isNotEmpty())
                     <swiper-container class="mySwiper" slides-per-view="6" space-between="10" free-mode="true"
-                        loop="true">
+                        loop="true" autoplay-delay="3000" autoplay-disable-on-interaction="false">
                         @foreach ($affiliations as $affiliation)
                             <swiper-slide class="swiper-slide">
                                 <img src="{{ asset('storage/' . $affiliation->logo) }}" alt="Affiliation Logo"
