@@ -26,9 +26,9 @@ return new class extends Migration
             $table->string('teligramUrl')->nullable();
             $table->string('instragramUrl')->nullable();
             $table->string('youtubeUrl')->nullable();
-            $table->string('about')->nullable();
-            $table->string('mission')->nullable();
-            $table->string('vision')->nullable();
+            $table->text('about')->nullable();
+            $table->text('mission')->nullable();
+            $table->text('vision')->nullable();
             $table->timestamps();
         });
     }

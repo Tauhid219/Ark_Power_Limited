@@ -45,31 +45,31 @@ class ProductResource extends Resource
                 TextInput::make('name')
                     ->label('Name')
                     ->required()
-                    ->live(debounce: 2000)
+                    ->live(debounce: 1000)
                     ->afterStateUpdated(function (Get $get, Set $set, ?string $old, ?string $state) {
                         if (($get('slug') ?? '') !== Str::slug($old)) {
                             return;
                         }
-    
+
                         $set('slug', Str::slug($state));
                     }),
-                
-                TextInput::make('slug')->unique(ignorable: fn ($record) => $record)->required(),
-                
+
+                TextInput::make('slug')->unique(ignorable: fn($record) => $record)->required(),
+
                 Textarea::make('description')
                     ->label('Description')
-                    ->nullable(),
-                
+                    ->required(),
+
                 FileUpload::make('image')
                     ->label('Product Image')
-                        ->image()
-                        ->nullable()
-                        // ->directory('favIcons')
-                        ->getUploadedFileNameForStorageUsing(function ($file) {
-                            $uniqueId = uniqid('product_');
-                            return $uniqueId . '.' . $file->getClientOriginalExtension();
-                        }), 
-                
+                    ->image()
+                    ->maxSize(6000)
+                    ->getUploadedFileNameForStorageUsing(function ($file) {
+                        $uniqueId = uniqid('product_');
+                        return $uniqueId . '.' . $file->getClientOriginalExtension();
+                    })
+                    ->required(),
+
                 Select::make('category_id')
                     ->label('Category')
                     ->options(
@@ -78,7 +78,7 @@ class ProductResource extends Resource
                     ->required(),
 
                 Toggle::make('status')
-                    ->label('Status')
+                    ->label('Publish')
                     ->onColor('success')
                     ->offColor('danger')
                     ->default(false)
@@ -90,16 +90,15 @@ class ProductResource extends Resource
                     ->offColor('danger')
                     ->default(false)
                     ->inline(false),
-                
-                TextInput::make('source_name')
-                ->label('Source Name'),
-                
-                TextInput::make('source_url')
-                ->url()
-                ->required(),
 
-                
-                
+                TextInput::make('source_name')
+                    ->label('Source Name'),
+
+                TextInput::make('source_url')
+                    ->url(),
+
+
+
 
             ]);
     }

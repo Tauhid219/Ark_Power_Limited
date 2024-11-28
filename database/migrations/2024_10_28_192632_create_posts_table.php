@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-
             $table->string('title');
             $table->string('slug')->unique(); // For SEO-friendly URLs
             $table->text('content');  // Main body of the post
             $table->string('featured_image')->nullable();  // Image URL
-            $table->foreignId('category_id')->constrained()->onDelete('cascade'); // Category of the post
+            $table->foreignId('category_id')->constrained('blog_categories')->onDelete('cascade'); // Category of the post
             $table->boolean('published')->default(false);  // Post status
             $table->timestamp('published_at')->nullable(); // Publishing date
 

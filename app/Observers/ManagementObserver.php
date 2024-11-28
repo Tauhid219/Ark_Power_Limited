@@ -23,7 +23,11 @@ class ManagementObserver
     public function updated(Management $management): void
     {
         if ($management->isDirty('featured_image')) {
-            Storage::disk('public')->delete($management->getOriginal('featured_image'));
+            $originalImage = $management->getOriginal('featured_image');
+
+            if ($originalImage && Storage::disk('public')->exists($originalImage)) {
+                Storage::disk('public')->delete($originalImage);
+            }
         }
     }
 
@@ -32,7 +36,7 @@ class ManagementObserver
      */
     public function deleted(Management $management): void
     {
-        if (! is_null($management->featured_image)) {
+        if (!empty($management->featured_image) && Storage::disk('public')->exists($management->featured_image)) {
             Storage::disk('public')->delete($management->featured_image);
         }
     }

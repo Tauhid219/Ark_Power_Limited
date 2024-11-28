@@ -52,8 +52,7 @@ class UserResource extends Resource
                     ->minLength(8)
                     ->same('passwordConfirmation')
                     ->dehydrateStateUsing(fn ($state) => !empty($state) ? Hash::make($state) : null)
-                    ->dehydrated(fn ($state) => !empty($state))
-                    ->required(),
+                    ->dehydrated(fn ($state) => !empty($state)),
 
                 TextInput::make('passwordConfirmation')
                     ->password()

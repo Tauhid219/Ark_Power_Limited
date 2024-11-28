@@ -11,18 +11,18 @@ class BlogCategoryObserver
     /**
      * Handle the BlogCategory "created" event.
      */
-    public function created(BlogCategory $blogCategory): void
-    {
-        
-    }
+    public function created(BlogCategory $blogCategory): void {}
 
     /**
      * Handle the BlogCategory "updated" event.
      */
     public function updated(BlogCategory $blogCategory): void
     {
-        if (! is_null($blogCategory->image)) {
-            Storage::disk('public')->delete($blogCategory->image);
+        // Retrieve the original image path before the update
+        $originalImage = $blogCategory->getOriginal('image');
+
+        if ($originalImage && Storage::disk('public')->exists($originalImage)) {
+            Storage::disk('public')->delete($originalImage);
         }
     }
 
@@ -31,7 +31,7 @@ class BlogCategoryObserver
      */
     public function deleted(BlogCategory $blogCategory): void
     {
-        if (! is_null($blogCategory->image)) {
+        if (!empty($blogCategory->image) && Storage::disk('public')->exists($blogCategory->image)) {
             Storage::disk('public')->delete($blogCategory->image);
         }
     }

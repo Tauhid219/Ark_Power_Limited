@@ -21,16 +21,16 @@ class SitedataObserver
      */
     public function updated(Sitedata $sitedata): void
     {
-        if ($sitedata->isDirty('logo')) {
-            Storage::disk('public')->delete($sitedata->getOriginal('logo'));
-        }
+        $fields = ['logo', 'white_logo', 'favIcon'];
 
-        if ($sitedata->isDirty('white_logo')) {
-            Storage::disk('public')->delete($sitedata->getOriginal('white_logo'));
-        }
+        foreach ($fields as $field) {
+            if ($sitedata->isDirty($field)) {
+                $originalFile = $sitedata->getOriginal($field);
 
-        if ($sitedata->isDirty('favIcon')) {
-            Storage::disk('public')->delete($sitedata->getOriginal('favIcon'));
+                if ($originalFile && Storage::disk('public')->exists($originalFile)) {
+                    Storage::disk('public')->delete($originalFile);
+                }
+            }
         }
     }
 
@@ -39,16 +39,14 @@ class SitedataObserver
      */
     public function deleted(Sitedata $sitedata): void
     {
-        if (! is_null($sitedata->logo)) {
-            Storage::disk('public')->delete($sitedata->logo);
-        }
+        $fields = ['logo', 'white_logo', 'favIcon'];
 
-        if (! is_null($sitedata->white_logo)) {
-            Storage::disk('public')->delete($sitedata->white_logo);
-        }
+        foreach ($fields as $field) {
+            $file = $sitedata->{$field};
 
-        if (! is_null($sitedata->favIcon)) {
-            Storage::disk('public')->delete($sitedata->favIcon);
+            if (!empty($file) && Storage::disk('public')->exists($file)) {
+                Storage::disk('public')->delete($file);
+            }
         }
     }
 

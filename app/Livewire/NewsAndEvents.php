@@ -5,13 +5,21 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Post;
+use App\Models\BlogCategory;
 
 class NewsAndEvents extends Component
 {
     use WithPagination;
 
     public $filter = 'all';
+    public $categories;
     public $totalPosts;
+
+    public function mount()
+    {
+        // Fetch all categories dynamically
+        $this->categories = BlogCategory::all();
+    }
 
     public function setFilter($filter)
     {
@@ -21,17 +29,14 @@ class NewsAndEvents extends Component
 
     public function getPostsProperty()
     {
-        // return match ($this->filter) {
-        //     'news' => Post::where('category_id', 1)->paginate(12),  // Assuming '1' is the ID for News
-        //     'events' => Post::where('category_id', 2)->paginate(12), // Assuming '2' is the ID for Events
-        //     default => Post::paginate(12),
-        // };
+        // Build query based on the selected filter
+        $query = Post::query();
 
-        $query = match ($this->filter) {
-            'news' => Post::where('category_id', 1),
-            'events' => Post::where('category_id', 2),
-            default => Post::query(),
-        };
+        if ($this->filter !== 'all') {
+            $query->whereHas('category', function ($q) {
+                $q->where('slug', $this->filter); // Filter by category slug
+            });
+        }
 
         $this->totalPosts = $query->count(); // Count total posts
         return $query->paginate(12); // Paginate with 12 items per page

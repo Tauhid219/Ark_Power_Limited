@@ -23,7 +23,11 @@ class CategoryObserver
     public function updated(Category $category): void
     {
         if ($category->isDirty('image')) {
-            Storage::disk('public')->delete($category->getOriginal('image'));
+            $originalImage = $category->getOriginal('image');
+
+            if ($originalImage && Storage::disk('public')->exists($originalImage)) {
+                Storage::disk('public')->delete($originalImage);
+            }
         }
     }
 
@@ -32,7 +36,7 @@ class CategoryObserver
      */
     public function deleted(Category $category): void
     {
-        if (! is_null($category->image)) {
+        if (!empty($category->image) && Storage::disk('public')->exists($category->image)) {
             Storage::disk('public')->delete($category->image);
         }
     }

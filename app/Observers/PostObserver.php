@@ -23,7 +23,11 @@ class PostObserver
     public function updated(Post $post): void
     {
         if ($post->isDirty('featured_image')) {
-            Storage::disk('public')->delete($post->getOriginal('featured_image'));
+            $originalImage = $post->getOriginal('featured_image');
+
+            if ($originalImage && Storage::disk('public')->exists($originalImage)) {
+                Storage::disk('public')->delete($originalImage);
+            }
         }
     }
 
@@ -32,7 +36,7 @@ class PostObserver
      */
     public function deleted(Post $post): void
     {
-        if (! is_null($post->featured_image)) {
+        if (!empty($post->featured_image) && Storage::disk('public')->exists($post->featured_image)) {
             Storage::disk('public')->delete($post->featured_image);
         }
     }

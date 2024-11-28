@@ -43,7 +43,7 @@ class BlogCategoryResource extends Resource
                 TextInput::make('name')
                     ->label('Name')
                     ->required()
-                    ->live(debounce: 2000)
+                    ->live(debounce: 1000)
                     ->afterStateUpdated(function (Get $get, Set $set, ?string $old, ?string $state) {
                         if (($get('slug') ?? '') !== Str::slug($old)) {
                             return;
@@ -62,6 +62,7 @@ class BlogCategoryResource extends Resource
                 FileUpload::make('image')
                     ->label('Post Category Image')
                     ->image()
+                    ->maxSize(6000)
                     ->nullable()
                     ->getUploadedFileNameForStorageUsing(function ($file) {
                         $uniqueId = uniqid('post_category_');

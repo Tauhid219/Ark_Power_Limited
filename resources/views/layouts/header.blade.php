@@ -24,7 +24,7 @@
 
 <body class="">
 
-    <header>
+    <header class="mb-10 md:mb-0">
         <div class="shadow-md w-full fixed top-0 z-50 left-0 py-2 navbar transition-colors ease-in-out">
             <div class="flex items-center justify-between w-full max-w-screen-xl mx-auto p-5">
 

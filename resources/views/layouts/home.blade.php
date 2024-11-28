@@ -9,9 +9,11 @@
                 <p class="text-xl text-white">Welcome to</p>
                 <h1 class="my-3 text-[#19ADEE] md:text-5xl text-3xl md:font-bold font-semibold uppercase ">Ark Power Limited
                 </h1>
-                <p class="text-white text-xl"> {{ $siteData->tagLine ?? 'Leading the way in power protection, generation, and innovation across Bangladesh.' }} </p>
+                <p class="text-white text-xl">
+                    {{ $siteData->tagLine ?? 'Leading the way in power protection, generation, and innovation across Bangladesh.' }}
+                </p>
                 <div>
-                    <a href="/about-us">
+                    <a href="{{ route('about') }}">
                         <button
                             class="btn-primary mt-5 md:mb-0 mb-10 text-black text-blod text-lg bg-slate-100 p-2 rounded-lg">About
                             Us</button>
@@ -176,9 +178,6 @@
                 </div>
             </div>
         </div>
-
-
-
 
         <div class="min-h-[70vh] flex items-center justify-center p-5 mt-10 w-full max-w-screen-xl mx-auto">
             <div>

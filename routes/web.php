@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 // Route::view('/', 'layouts.home');
 
-Route::get('/', 'App\Http\Controllers\BaseController@home');
+// Route::get('/', 'App\Http\Controllers\BaseController@home');
+
+Route::get('/', [BaseController::class, 'home'])->name('home');
 Route::get('/news', [BaseController::class, 'news'])->name('news');
 Route::get('/about', [BaseController::class, 'aboutUs'])->name('about');
 Route::get('/career', [BaseController::class, 'career'])->name('career');

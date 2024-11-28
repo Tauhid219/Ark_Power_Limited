@@ -22,8 +22,10 @@ class AffiliationObserver
      */
     public function updated(Affiliation $affiliation): void
     {
-        if (! is_null($affiliation->image)) {
-            Storage::disk('public')->delete($affiliation->image);
+        $originalImage = $affiliation->getOriginal('image'); // Fetch the original image before the update.
+
+        if ($originalImage && Storage::disk('public')->exists($originalImage)) {
+            Storage::disk('public')->delete($originalImage);
         }
     }
 
@@ -32,7 +34,7 @@ class AffiliationObserver
      */
     public function deleted(Affiliation $affiliation): void
     {
-        if (! is_null($affiliation->image)) {
+        if (!empty($affiliation->image) && Storage::disk('public')->exists($affiliation->image)) {
             Storage::disk('public')->delete($affiliation->image);
         }
     }

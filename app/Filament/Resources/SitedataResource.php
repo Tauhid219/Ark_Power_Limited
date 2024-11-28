@@ -28,7 +28,7 @@ class SitedataResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return 'Site Seetings';
+        return 'Site Settings';
     }
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -49,6 +49,7 @@ class SitedataResource extends Resource
                     ->label('Logo')
                     ->image()
                     ->required()
+                    ->maxSize(6000)
                     // ->directory('logos')
                     ->getUploadedFileNameForStorageUsing(function ($file) {
                         $uniqueId = uniqid('logo_');
@@ -58,6 +59,7 @@ class SitedataResource extends Resource
                 FileUpload::make('white_logo')
                     ->label('Footer Logo')
                     ->image()
+                    ->maxSize(6000)
                     ->required()
                     // ->directory('logos')
                     ->getUploadedFileNameForStorageUsing(function ($file) {
@@ -68,6 +70,7 @@ class SitedataResource extends Resource
                 FileUpload::make('favIcon')
                     ->label('Favicon')
                     ->image()
+                    ->maxSize(6000)
                     ->nullable()
                     // ->directory('favIcons')
                     ->getUploadedFileNameForStorageUsing(function ($file) {
@@ -118,14 +121,17 @@ class SitedataResource extends Resource
 
                 Textarea::make('about')
                     ->label('About')
+                    ->columnSpan(2)
                     ->nullable(),
 
                 Textarea::make('mission')
                     ->label('Mission')
+                    ->columnSpan(2)
                     ->nullable(),
 
                 Textarea::make('vision')
                     ->label('Vision')
+                    ->columnSpan(2)
                     ->nullable(),
             ]);
     }

@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('main-content')
-    <div class="min-h-screen">
+    <div class="min-h-screen pt-10">
         <div>
             {{-- <div class="bg-[url('https://neevfund.com/wp-content/uploads/2023/03/career-banner.jpg')] bg-cover bg-center">
                 <div class="p-5 pt-32 bg-gradient-to-r from-black/60 to-black/30 text-white">
@@ -8,7 +8,7 @@
                         Career Opportunities</h2>
                 </div>
             </div> --}}
-            <div class="w-full max-w-screen-xl mx-auto p-5  md:mt-24 mt-14">
+            <div class="w-full max-w-screen-xl mx-auto p-5">
                 <div class="text-center mb-16">
                     <h1 class="text-primary text-center md:text-5xl text-3xl mb-7">Explore Exciting Career Opportunities</h1>
                     <p class="text-lg text-gray-600">We’re always looking for talented people to join our team.

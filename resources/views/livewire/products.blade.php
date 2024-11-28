@@ -4,17 +4,17 @@
             <h1 class="text-primary text-center md:text-5xl text-3xl uppercase">Our Products</h1>
             <p class="text-primary text-center md:mt-2 text-xl md:uppercase font-medium">We truly care about our
                 customer</p>
-            <div class="flex justify-center my-5">
+            <div class="flex flex-wrap justify-center my-5 gap-2">
                 <!-- "All" Button -->
                 <button wire:click="filterByCategory"
-                    class="px-4 py-2 mx-2 {{ is_null($selectedCategory) ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">
+                    class="px-4 py-2 mx-2 my-1 {{ is_null($selectedCategory) ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">
                     All
                 </button>
 
                 <!-- Category Buttons -->
                 @foreach ($categories as $category)
                     <button wire:click="filterByCategory({{ $category->id }})"
-                        class="px-4 py-2 mx-2 {{ $selectedCategory === $category->id ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">
+                        class="px-4 py-2 mx-2 my-1 {{ $selectedCategory === $category->id ? 'bg-blue-600 text-white' : 'bg-gray-200' }}">
                         {{ $category->name }}
                     </button>
                 @endforeach

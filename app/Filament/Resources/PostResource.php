@@ -48,7 +48,7 @@ class PostResource extends Resource
                 TextInput::make('title')
                     ->label('Title')
                     ->required()
-                    ->live(debounce: 2000)
+                    ->live(debounce: 1000)
                     ->afterStateUpdated(function (Get $get, Set $set, ?string $old, ?string $state) {
                         if (($get('slug') ?? '') !== Str::slug($old)) {
                             return;
@@ -60,16 +60,21 @@ class PostResource extends Resource
                 TextInput::make('slug')->unique(ignorable: fn($record) => $record)->required(),
 
 
+
                 Select::make('category_id')
                     ->label('Category')
-                    ->options(fn() => BlogCategory::pluck('name', 'id'))
+                    ->options(
+                        BlogCategory::all()->pluck('name', 'id')
+                    )
                     ->required(),
+
+
 
                 FileUpload::make('featured_image')
                     ->label('Featured Image')
                     ->image()
                     ->required()
-                    // ->directory('favIcons')
+                    ->maxSize(6000)
                     ->getUploadedFileNameForStorageUsing(function ($file) {
                         $uniqueId = uniqid('post_featured');
                         return $uniqueId . '.' . $file->getClientOriginalExtension();
@@ -109,7 +114,7 @@ class PostResource extends Resource
                     ->label('Featured image')
                     ->searchable()
                     ->sortable(),
-                
+
                 TextColumn::make('category.name')
                     ->label('Category')
                     ->searchable()
